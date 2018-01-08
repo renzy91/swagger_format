@@ -1,0 +1,4608 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "智能设备项目。",
+    "version": "1.0.0",
+    "title": "智能设备项目API",
+    "termsOfService": "服务条款",
+    "contact": {
+      "name": "后台开发团队"
+    },
+    "license": {
+      "name": "The Apache License, Version 2.0",
+      "url": "http://www.baidu.com"
+    },
+    "供应商": "供应商v"
+  },
+  "host": "47.93.124.174:12019",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "locker-pwd-controller",
+      "description": "门锁密钥管理接口"
+    },
+    {
+      "name": "locker-controller",
+      "description": "门锁管理接口"
+    },
+    {
+      "name": "system-config-controller",
+      "description": "系统配置接口"
+    },
+    {
+      "name": "locker-callback-controller",
+      "description": "Locker Callback Controller"
+    },
+    {
+      "name": "gateway-controller",
+      "description": "网关管理接口"
+    },
+    {
+      "name": "locker-key-controller",
+      "description": "门锁钥匙管理接口"
+    }
+  ],
+  "paths": {
+    "/v3/gateway/change_gateway": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "更换网关",
+        "description": "更换网关",
+        "operationId": "changeGatewayUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "oldSmartDeviceId",
+            "in": "query",
+            "description": "原网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newSmartDeviceId",
+            "in": "query",
+            "description": "新网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockerId",
+            "in": "query",
+            "description": "锁id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ChangeGatewayReq"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/delete": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "删除网关",
+        "description": "删除网关",
+        "operationId": "deleteGatewayUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DeleteGatewayResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/detail": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "网关详情",
+        "description": "网关详情",
+        "operationId": "gatewayDetailUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GatewayDetailResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/edit": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "网关修改备注",
+        "description": "网关修改备注",
+        "operationId": "gatewayEditUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cityName",
+            "in": "query",
+            "description": "城市名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "districtName",
+            "in": "query",
+            "description": "小区名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "doorNo",
+            "in": "query",
+            "description": "门牌号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "详细地址",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otherInfo",
+            "in": "query",
+            "description": "其他信息",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/init": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "注册网关",
+        "description": "注册网关",
+        "operationId": "registerGatewayUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "sn",
+            "in": "query",
+            "description": "网关唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerName",
+            "in": "query",
+            "description": "经纪人姓名",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "thirdBrand",
+            "in": "query",
+            "description": "网关品牌",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cityName",
+            "in": "query",
+            "description": "城市名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "districtName",
+            "in": "query",
+            "description": "小区名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "doorNo",
+            "in": "query",
+            "description": "门牌号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "详细地址",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otherInfo",
+            "in": "query",
+            "description": "其他信息",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RegisterGatewayResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/list": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "网关列表",
+        "description": "网关列表",
+        "operationId": "listGatewaysUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "thirdBrand",
+            "in": "query",
+            "description": "锁品牌 1-联络,2-科技侠,3-狄耐克",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "showRelateMax",
+            "in": "query",
+            "description": "是否显示关联门锁数量已达上限的网关(thirdBrand为null时此字段无效) false-不显示,true|不填-显示",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "online",
+            "in": "query",
+            "description": "在线状态 0-离线,1-在线,不传-全部",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyWord",
+            "in": "query",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GatewayListResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/relate": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "网关关联门锁",
+        "description": "网关关联门锁",
+        "operationId": "gatewayLockRelateUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockerIds",
+            "in": "query",
+            "description": "锁id 多个id以 , 分割",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GatewayLockRelateResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/gateway/unrelate": {
+      "post": {
+        "tags": [
+          "gateway-controller"
+        ],
+        "summary": "网关取消关联门锁",
+        "description": "网关取消关联门锁",
+        "operationId": "gatewayLockUnrelateUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "网关api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockerIds",
+            "in": "query",
+            "description": "锁id 多个id以 , 分割",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "isReset",
+            "in": "query",
+            "description": "是否重置锁 true-是,false|不填-否",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GatewayLockUnrelateResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/key/customer/key": {
+      "post": {
+        "tags": [
+          "locker-key-controller"
+        ],
+        "summary": "租客端电子钥匙",
+        "description": "租客端电子钥匙",
+        "operationId": "customerKeyUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CustomerKeyResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/key/delete": {
+      "post": {
+        "tags": [
+          "locker-key-controller"
+        ],
+        "summary": "删除电子钥匙",
+        "description": "删除电子钥匙",
+        "operationId": "deleteKeyUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/keyDeleteResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/key/list": {
+      "post": {
+        "tags": [
+          "locker-key-controller"
+        ],
+        "summary": "电子钥匙列表",
+        "description": "电子钥匙列表",
+        "operationId": "listKeyUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型 0-员工,1-租客",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyTypes",
+            "in": "query",
+            "description": "密码类型 多个类型 , 分割  1-永久,2-限时,3-蓝牙,4-单次,不传-所有",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListKeyResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/key/modify_expiretime": {
+      "post": {
+        "tags": [
+          "locker-key-controller"
+        ],
+        "summary": "修改电子钥匙有效期",
+        "description": "修改电子钥匙有效期",
+        "operationId": "modifyKeyExpiretimeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "开始时间 yyyy-MM-dd HH:mm:ss",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd HH:mm:ss",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ModifyExpiretimeResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/key/send": {
+      "post": {
+        "tags": [
+          "locker-key-controller"
+        ],
+        "summary": "发送电子钥匙",
+        "description": "发送电子钥匙",
+        "operationId": "sendKeyUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keyType",
+            "in": "query",
+            "description": "密码类型 1-永久,2-限时,3-蓝牙,4-单次",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "生效时间 yyyy-MM-dd HH:MM:SS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd HH:MM:SS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "description": "员工id 分配给员工时有值",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "employeeName",
+            "in": "query",
+            "description": "员工姓名 分配给员工时有值",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userRentUUID",
+            "in": "query",
+            "description": "租客id 分配给租客时有值",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SendKeyResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/bind": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "门锁绑定到房间或者房源",
+        "description": "门锁绑定到房间或者房源",
+        "operationId": "bindLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "bindType",
+            "in": "query",
+            "description": "绑定类型 1-绑到房源,2-绑到房间",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyWord",
+            "in": "query",
+            "description": "房源或房间uid bindType=1时房源uid,bindType=2时房间uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerBindResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/callback/password": {
+      "post": {
+        "tags": [
+          "locker-callback-controller"
+        ],
+        "summary": "passwordCallback",
+        "operationId": "passwordCallbackUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyType",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "operationType",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/customer/get_code": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "租客端获取动态码",
+        "description": "租客端获取动态码",
+        "operationId": "customerGetCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "sn",
+            "in": "query",
+            "description": "锁设备唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerCustomerGetCodeResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/customer/list": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "租户门锁列表",
+        "description": "租户门锁列表",
+        "operationId": "customerListLockersUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "lockType",
+            "in": "query",
+            "description": "锁类型 1|不传-蓝牙，2-网关",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyWord",
+            "in": "query",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "elecOrder",
+            "in": "query",
+            "description": "电量排序 不传/任意值-从低到高排序（默认）,1-从高到低排序",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CustomerLockerListResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/customer/unlock_record": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "租客端开门记录",
+        "description": "租客端开门记录",
+        "operationId": "customerUnlockRecordsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "ownerType",
+            "in": "query",
+            "description": "拥有者类型 1-员工,2-租客,不传-所有",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "开始时间 yyyy-MM-dd HH:MM:SS",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd HH:MM:SS",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CustomerUnlockRecordsResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/delete": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "删除门锁",
+        "description": "删除门锁",
+        "operationId": "deleteLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceIds",
+            "in": "query",
+            "description": "锁api平台唯一标识 多个id以 , 分割",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerDelResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/detail": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "门锁详情",
+        "description": "门锁详情",
+        "operationId": "detailLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerDetailResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/edit": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "编辑门锁备注",
+        "description": "编辑门锁备注",
+        "operationId": "editLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cityName",
+            "in": "query",
+            "description": "城市名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "districtName",
+            "in": "query",
+            "description": "小区名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "doorNo",
+            "in": "query",
+            "description": "门牌号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "详细地址",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otherInfo",
+            "in": "query",
+            "description": "其他信息",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerEditResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/get_code": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "获取动态码",
+        "description": "获取动态码",
+        "operationId": "getCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "sn",
+            "in": "query",
+            "description": "锁设备唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "operation",
+            "in": "query",
+            "description": "操作 1-注册,2-删除,3-修改,4-修改有效期",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerGetCodeResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/list": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "经纪人端门锁列表",
+        "description": "经纪人端门锁列表",
+        "operationId": "listLockersUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "thirdBrand",
+            "in": "query",
+            "description": "锁品牌 1-联络,2-科技侠,3-狄耐克",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "houseUuid",
+            "in": "query",
+            "description": "房源uuid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "roomUuid",
+            "in": "query",
+            "description": "房间uuid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gatewayId",
+            "in": "query",
+            "description": "网关id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "lockType",
+            "in": "query",
+            "description": "锁类型 1-蓝牙,2-网关 不传-所有",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "relate",
+            "in": "query",
+            "description": "是否已关联到网关 0-未关联 1-关联成功 2-关联中 3-关联异常",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "isBind",
+            "in": "query",
+            "description": "是否绑定 0-未绑定,1-绑定,不传-全部",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyWord",
+            "in": "query",
+            "description": "搜索关键字",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "elecOrder",
+            "in": "query",
+            "description": "电量排序 不传/任意值-从低到高排序（默认）,1-从高到低排序",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerListResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/operation_record": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "操作记录",
+        "description": "操作记录",
+        "operationId": "operationRecordUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "有效期开始时间 格式yyyy-MM-dd,不传默认查询最近一个月",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "有效期结束时间 格式yyyy-MM-dd,不传默认查询最近一个月",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationRecordsResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/register": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "注册门锁",
+        "description": "注册门锁",
+        "operationId": "registerLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "sn",
+            "in": "query",
+            "description": "锁设备唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockType",
+            "in": "query",
+            "description": "锁类型 1-蓝牙,2-网关",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "thirdBrand",
+            "in": "query",
+            "description": "锁品牌 1-联络,2-科技侠,3-狄耐克",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerName",
+            "in": "query",
+            "description": "经纪人/添加人 姓名",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockMac",
+            "in": "query",
+            "description": "锁mac地址",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gatewayId",
+            "in": "query",
+            "description": "网关id,有此字段门锁注册后关联到此网关下",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "lockName",
+            "in": "query",
+            "description": "锁名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "cityName",
+            "in": "query",
+            "description": "城市名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "districtName",
+            "in": "query",
+            "description": "小区名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "doorNo",
+            "in": "query",
+            "description": "门牌号",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "详细地址",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "otherInfo",
+            "in": "query",
+            "description": "其他信息",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerRegisterResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/state": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "门锁在平台的注册状态",
+        "description": "门锁在平台的注册状态",
+        "operationId": "stateUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "sn",
+            "in": "query",
+            "description": "锁唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerStateResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/unbind": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "门锁从房间或者房源解绑",
+        "description": "门锁从房间或者房源解绑",
+        "operationId": "unbindLockerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "unbindType",
+            "in": "query",
+            "description": "解绑类型 1-从房源解绑,2-从房间解绑",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyWord",
+            "in": "query",
+            "description": "房源或房间uid unbindType=1时房源uid,unbindType=2时房间uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LockerUnbindResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/locker/unlock_record": {
+      "post": {
+        "tags": [
+          "locker-controller"
+        ],
+        "summary": "经纪人端开门记录",
+        "description": "经纪人端开门记录",
+        "operationId": "unlockRecordsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "有效期开始时间 格式yyyy-MM-dd,不传默认查询最近一个月",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "有效期结束时间 格式yyyy-MM-dd,不传默认查询最近一个月",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "ownerType",
+            "in": "query",
+            "description": "拥有者类型 1-员工,2-租客,不传-所有",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UnlockRecordsResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/check": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "修改密码时校验密码是否可用",
+        "description": "修改密码时校验密码是否可用",
+        "operationId": "checkPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lockerPwd",
+            "in": "query",
+            "description": "密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/customer/detail": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "租客端密码详情",
+        "description": "租客端密码详情",
+        "operationId": "customerPwdDetailUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "lockerPwd",
+            "in": "query",
+            "description": "密码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CustomerPwdDetailResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/customer/dynamic_pwd": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "租客端生成临时密码",
+        "description": "租客端生成临时密码",
+        "operationId": "getCustomerDynamicPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetCustomerDynamicPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/customer/get": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "租客端生成蓝牙密码",
+        "description": "租客端生成蓝牙密码",
+        "operationId": "getCustomerPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "钥匙id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "生效时间 yyyy-MM-dd HH:MM:SS",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetCustomerPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/customer/list": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "租客端密码列表",
+        "description": "租客端密码列表",
+        "operationId": "customerListPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CustomerListPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/customer/modify": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "租客端修改密码",
+        "description": "租客端修改密码",
+        "operationId": "customerModifyPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "用户id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "钥匙api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPwd",
+            "in": "query",
+            "description": "旧密码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPwd",
+            "in": "query",
+            "description": "新密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/delete": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "删除密码",
+        "description": "删除密码",
+        "operationId": "deletePwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/disable": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "禁用密码",
+        "description": "禁用密码",
+        "operationId": "disablePwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/dynamic_pwd": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "经纪人端生成临时密码",
+        "description": "经纪人端生成临时密码",
+        "operationId": "getDynamicPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "生效时间 yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetDynamicPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/enable": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "启用密码",
+        "description": "启用密码",
+        "operationId": "enablePwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/get": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "经纪人端生成密码",
+        "description": "经纪人端生成密码",
+        "operationId": "getPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keyType",
+            "in": "query",
+            "description": "密码类型 1-永久,2-限时,3-蓝牙,4-单次",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "isDelOld",
+            "in": "query",
+            "description": "是否删除锁上的旧密码 \"false\"-否,\"true\"-是",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "生效时间 yyyy-MM-dd HH:MM:SS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd HH:MM:SS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "description": "员工id 分配给员工时有值",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "employeeName",
+            "in": "query",
+            "description": "员工姓名 分配给员工时有值",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userRentUUID",
+            "in": "query",
+            "description": "租客id 分配给租客时有值",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/list": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "密码列表",
+        "description": "密码列表",
+        "operationId": "listPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型 0-员工,1-租客",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyTypes",
+            "in": "query",
+            "description": "密码类型 多个类型 , 分割  1-永久,2-限时,3-蓝牙,4-单次,不传-所有",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/list_002": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "密码列表002",
+        "description": "密码列表002",
+        "operationId": "listPwd002UsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "租客id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型 0-员工,1-租客",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码 从1开始",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页条数",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyTypes",
+            "in": "query",
+            "description": "密码类型 多个类型 , 分割  1-永久,2-限时,3-蓝牙,4-单次,不传-所有",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListPwd002Resp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/modify": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "修改密码",
+        "description": "修改密码",
+        "operationId": "modifyPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "钥匙api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPwd",
+            "in": "query",
+            "description": "旧密码",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPwd",
+            "in": "query",
+            "description": "新密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/modify_expiretime": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "修改密码有效期",
+        "description": "修改密码有效期",
+        "operationId": "modifyExpiretimeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "开始时间 yyyy-MM-dd HH:mm:ss",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "结束时间 yyyy-MM-dd HH:mm:ss",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/HfqResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/re_get": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "重新生成密码",
+        "description": "重新生成密码",
+        "operationId": "reGetPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "api平台钥匙唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ReGetPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/resend": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "重新发送密码",
+        "description": "重新发送密码",
+        "operationId": "resendPwdUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "agencyId",
+            "in": "query",
+            "description": "中介公司id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "smartDeviceId",
+            "in": "query",
+            "description": "锁api平台唯一标识",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keyNo",
+            "in": "query",
+            "description": "钥匙api平台唯一标识",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResendPwdResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/pwd/subbroker/list": {
+      "post": {
+        "tags": [
+          "locker-pwd-controller"
+        ],
+        "summary": "获取组织架构下人员",
+        "description": "获取组织架构下人员",
+        "operationId": "listSubbrokersUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "brokerId",
+            "in": "query",
+            "description": "经纪人id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubbrokerListResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v3/system_config/check": {
+      "post": {
+        "tags": [
+          "system-config-controller"
+        ],
+        "summary": "校验指定模块是否开放",
+        "description": "校验指定模块是否开放",
+        "operationId": "checkSystemConfigUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "modelName",
+            "in": "query",
+            "description": "模块名称",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SystemConfigCheckResp"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ChangeGatewayReq": {
+      "type": "object",
+      "required": [
+        "agencyId",
+        "brokerId",
+        "lockerId",
+        "newSmartDeviceId",
+        "oldSmartDeviceId"
+      ],
+      "properties": {
+        "agencyId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "中介公司id"
+        },
+        "brokerId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "经纪人id"
+        },
+        "lockerId": {
+          "type": "string",
+          "description": "锁id"
+        },
+        "newSmartDeviceId": {
+          "type": "string",
+          "description": "新网关api平台唯一标识"
+        },
+        "oldSmartDeviceId": {
+          "type": "string",
+          "description": "原网关api平台唯一标识"
+        }
+      }
+    },
+    "CheckPwdResp": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否可用 0-否,1-是"
+        }
+      }
+    },
+    "CustomerKeyResp": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "失效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "keyNo": {
+          "type": "string",
+          "description": "api平台钥匙唯一标识"
+        },
+        "keyType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "钥匙类型 1-永久,2-限时"
+        },
+        "lockerPwd": {
+          "type": "string",
+          "description": "钥匙"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        }
+      }
+    },
+    "CustomerListPwdResp": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimplePwd"
+          }
+        }
+      }
+    },
+    "CustomerLockerListResp": {
+      "type": "object",
+      "properties": {
+        "lockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerSimpleLocker"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "CustomerPwdDetailResp": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "keyNo": {
+          "type": "string",
+          "description": "api平台钥匙唯一标识"
+        },
+        "keyType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "密码类型 1-永久,2-限时"
+        },
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        }
+      }
+    },
+    "CustomerSimpleLocker": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "设备名称"
+        },
+        "electricity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "电量"
+        },
+        "location": {
+          "type": "string",
+          "description": "所在位置 绑定后有值"
+        },
+        "lockMac": {
+          "type": "string",
+          "description": "锁mac地址"
+        },
+        "lockType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "锁类型 1-蓝牙，2-网关"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否在线 0-否,1-是"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "锁api平台唯一标识"
+        },
+        "sn": {
+          "type": "string",
+          "description": "锁设备唯一标识"
+        },
+        "useType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "使用类型 绑定之后有值 1-公共锁,2-房间锁"
+        }
+      }
+    },
+    "CustomerUnlockRecordsResp": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Records"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "DeleteGatewayResp": {
+      "type": "object"
+    },
+    "Gateway": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "cityName": {
+          "type": "string",
+          "description": "城市"
+        },
+        "districtName": {
+          "type": "string",
+          "description": "小区"
+        },
+        "doorNo": {
+          "type": "string",
+          "description": "门牌号"
+        },
+        "lockMax": {
+          "type": "integer",
+          "format": "int32",
+          "description": "可关联门锁最大数量"
+        },
+        "lockNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "已关联门锁数量"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "在线状态 0-离线 1-在线"
+        },
+        "otherInfo": {
+          "type": "string",
+          "description": "其他信息"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "网关api平台唯一标识"
+        },
+        "sn": {
+          "type": "string",
+          "description": "网关唯一标识"
+        }
+      }
+    },
+    "GatewayDetailResp": {
+      "type": "object",
+      "required": [
+        "brokerId",
+        "brokerName",
+        "sn",
+        "thirdBrand"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "brokerId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "经纪人id"
+        },
+        "brokerName": {
+          "type": "string",
+          "description": "经纪人姓名"
+        },
+        "cityName": {
+          "type": "string",
+          "description": "城市名称"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间 格式 yyyy-MM-dd HH:mm:ss"
+        },
+        "districtName": {
+          "type": "string",
+          "description": "小区名称"
+        },
+        "doorNo": {
+          "type": "string",
+          "description": "门牌号"
+        },
+        "lockMax": {
+          "type": "integer",
+          "format": "int32",
+          "description": "门锁最大可关联数量"
+        },
+        "lockNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "已关联门锁数量"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "在线状态 0-离线 1-在线"
+        },
+        "onlineUpdateTime": {
+          "type": "string",
+          "description": "在线状态最后跟新时间 格式 yyyy-MM-dd HH:mm:ss"
+        },
+        "otherInfo": {
+          "type": "string",
+          "description": "其他信息"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "网关api平台唯一标识"
+        },
+        "sn": {
+          "type": "string",
+          "description": "网关唯一标识"
+        },
+        "thirdBrand": {
+          "type": "string",
+          "description": "锁品牌 1-联络,2-科技侠,3-狄耐克"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后更新时间 格式 yyyy-MM-dd HH:mm:ss"
+        }
+      }
+    },
+    "GatewayListResp": {
+      "type": "object",
+      "properties": {
+        "gateway": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Gateway"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      }
+    },
+    "GatewayLockRelateResp": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "成功绑定个数"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "网关api平台唯一标识"
+        }
+      }
+    },
+    "GatewayLockUnrelateResp": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "成功绑定个数"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "网关api平台唯一标识"
+        }
+      }
+    },
+    "GetCustomerDynamicPwdResp": {
+      "type": "object",
+      "properties": {
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "GetCustomerPwdResp": {
+      "type": "object",
+      "properties": {
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "GetDynamicPwdResp": {
+      "type": "object",
+      "properties": {
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "GetPwdResp": {
+      "type": "object",
+      "properties": {
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "HfqResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "object"
+        },
+        "status": {
+          "$ref": "#/definitions/ResponseStatus"
+        }
+      }
+    },
+    "ListKeyResp": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleKey"
+          }
+        }
+      }
+    },
+    "ListPwd002Resp": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimplePwd"
+          }
+        }
+      }
+    },
+    "ListPwdResp": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimplePwd"
+          }
+        }
+      }
+    },
+    "LockerBindResp": {
+      "type": "object",
+      "properties": {
+        "smartDeviceId": {
+          "type": "string",
+          "description": "锁api平台唯一标识"
+        }
+      }
+    },
+    "LockerCustomerGetCodeResp": {
+      "type": "object",
+      "properties": {
+        "deviceCode": {
+          "type": "string",
+          "description": "动态码"
+        }
+      }
+    },
+    "LockerDelResp": {
+      "type": "object"
+    },
+    "LockerDetailResp": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "brokerId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "经纪人id"
+        },
+        "brokerName": {
+          "type": "string",
+          "description": "经纪人姓名"
+        },
+        "cityName": {
+          "type": "string",
+          "description": "城市"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "districtName": {
+          "type": "string",
+          "description": "小区"
+        },
+        "doorNo": {
+          "type": "string",
+          "description": "门牌号"
+        },
+        "electricity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "电量"
+        },
+        "gatewayId": {
+          "type": "string",
+          "description": "网关id,关联有值"
+        },
+        "gatewaySn": {
+          "type": "string",
+          "description": "网关sn,关联有值"
+        },
+        "houseUuid": {
+          "type": "string",
+          "description": "房源uuid"
+        },
+        "isBind": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否绑定 0-否,1-是"
+        },
+        "location": {
+          "type": "string",
+          "description": "位置"
+        },
+        "lockMac": {
+          "type": "string",
+          "description": "锁mac地址"
+        },
+        "lockType": {
+          "type": "string",
+          "description": "锁类型 1-蓝牙,2-网关"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "在线状态 0-离线,1-在线"
+        },
+        "otherInfo": {
+          "type": "string",
+          "description": "其他信息"
+        },
+        "pwd": {
+          "type": "string",
+          "description": "初始密码"
+        },
+        "relate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "关联状态 0-未关联,1-关联成功,2-关联中,3-关联异常"
+        },
+        "roomUuid": {
+          "type": "string",
+          "description": "房间uuid"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "锁api平台唯一标识"
+        },
+        "sn": {
+          "type": "string",
+          "description": "锁唯一标识"
+        },
+        "thirdBrand": {
+          "type": "string",
+          "description": "锁品牌 1-联络,2-科技侠,3-狄耐克"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        },
+        "useType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "门锁使用类型"
+        }
+      }
+    },
+    "LockerEditResp": {
+      "type": "object"
+    },
+    "LockerGetCodeResp": {
+      "type": "object",
+      "properties": {
+        "deviceCode": {
+          "type": "string",
+          "description": "动态码"
+        }
+      }
+    },
+    "LockerListResp": {
+      "type": "object",
+      "properties": {
+        "lockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleLocker"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总数"
+        }
+      }
+    },
+    "LockerRegisterResp": {
+      "type": "object",
+      "properties": {
+        "pwd": {
+          "type": "string",
+          "description": "初始密码"
+        },
+        "smartDeviceId": {
+          "type": "string"
+        }
+      }
+    },
+    "LockerStateResp": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否已经绑定到平台 0-否,1-是"
+        }
+      }
+    },
+    "LockerUnbindResp": {
+      "type": "object",
+      "properties": {
+        "smartDeviceId": {
+          "type": "string",
+          "description": "锁api平台唯一标识"
+        }
+      }
+    },
+    "ModifyExpiretimeResp": {
+      "type": "object"
+    },
+    "OperationRecordsResp": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Record"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ReGetPwdResp": {
+      "type": "object",
+      "properties": {
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "Record": {
+      "type": "object",
+      "properties": {
+        "brokerId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "经纪人/操作者 id"
+        },
+        "brokerName": {
+          "type": "string",
+          "description": "经纪人/操作者 姓名"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "操作时间"
+        },
+        "keyType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "密码类型"
+        },
+        "operation": {
+          "type": "integer",
+          "format": "int32",
+          "description": "操作类型 1-发送密码,2-冻结密码,3-修改密码,4-删除密码,5-查看动态密码"
+        },
+        "ownerName": {
+          "type": "string",
+          "description": "密码所有者姓名"
+        },
+        "ownerPhone": {
+          "type": "string",
+          "description": "密码所有者手机号"
+        },
+        "result": {
+          "type": "integer",
+          "format": "int32",
+          "description": "结果 0-失败 1-成功"
+        }
+      }
+    },
+    "Records": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "description": "上报时间"
+        },
+        "name": {
+          "type": "string",
+          "description": "员工姓名或者租客姓名"
+        },
+        "ownerType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "拥有者类型 1-员工,2-租客"
+        },
+        "phone": {
+          "type": "string",
+          "description": "员工电话或者租客电话"
+        },
+        "result": {
+          "type": "integer",
+          "format": "int32",
+          "description": "结果 0-失败，1-成功"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "类型 0-电子钥匙,1-键盘密码"
+        },
+        "unlockTime": {
+          "type": "string",
+          "description": "开门时间"
+        }
+      }
+    },
+    "RegisterGatewayResp": {
+      "type": "object",
+      "properties": {
+        "smartDeviceId": {
+          "type": "string",
+          "description": "网关api平台唯一标识"
+        }
+      }
+    },
+    "ResendPwdResp": {
+      "type": "object"
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "SendKeyResp": {
+      "type": "object"
+    },
+    "SimpleKey": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "失效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "keyNo": {
+          "type": "string",
+          "description": "api平台钥匙唯一标识"
+        },
+        "keyType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "密码类型 1-永久,2-限时,3-蓝牙,4-单次"
+        },
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        },
+        "name": {
+          "type": "string",
+          "description": "员工姓名或租客姓名"
+        },
+        "phone": {
+          "type": "string",
+          "description": "员工手机或租客手机"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "state": {
+          "type": "string",
+          "description": "密码状态0-已删除 1-已启用 2-已禁用3-生成中 4-生成失败5-启用中 6-启用失败7-删除中 8-删除失败9-禁用中 10-禁用失败"
+        }
+      }
+    },
+    "SimpleLocker": {
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "type": "string",
+          "description": "设备名称"
+        },
+        "electricity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "电量"
+        },
+        "isBind": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否绑定 0-否,1-是"
+        },
+        "location": {
+          "type": "string",
+          "description": "所在位置,绑定后有值"
+        },
+        "lockMac": {
+          "type": "string",
+          "description": "锁mac地址"
+        },
+        "lockType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "锁类型 1-蓝牙,2-网关"
+        },
+        "online": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否在线 0-否,1-是"
+        },
+        "relate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否已关联到网关 0-未关联 1-关联成功 2-关联中 3-关联异常"
+        },
+        "smartDeviceId": {
+          "type": "string",
+          "description": "锁api平台唯一标识"
+        },
+        "sn": {
+          "type": "string",
+          "description": "锁设备唯一标识"
+        },
+        "useType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "使用类型 绑定之后有值 1-公共锁,2-房间锁"
+        }
+      }
+    },
+    "SimplePwd": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "keyNo": {
+          "type": "string",
+          "description": "api平台钥匙唯一标识"
+        },
+        "keyType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "密码类型 1-永久,2-限时,4-单次"
+        },
+        "lockerPwd": {
+          "type": "string",
+          "description": "密码"
+        },
+        "name": {
+          "type": "string",
+          "description": "员工姓名或租客姓名"
+        },
+        "phone": {
+          "type": "string",
+          "description": "员工手机或租客手机"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "生效时间 yyyy-MM-dd HH:MM:SS"
+        },
+        "state": {
+          "type": "string",
+          "description": "密码状态0-已删除 1-已启用 2-已禁用3-生成中 4-生成失败5-启用中 6-启用失败7-删除中 8-删除失败9-禁用中 10-禁用失败"
+        }
+      }
+    },
+    "SimpleSubbroker": {
+      "type": "object",
+      "properties": {
+        "brokerId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "经纪人id"
+        },
+        "brokerName": {
+          "type": "string",
+          "description": "经纪人名称"
+        },
+        "brokerPhone": {
+          "type": "string",
+          "description": "经纪人电话"
+        }
+      }
+    },
+    "SubbrokerListResp": {
+      "type": "object",
+      "properties": {
+        "subbrokers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleSubbroker"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "SystemConfigCheckResp": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否开放 0-否,1-是"
+        }
+      }
+    },
+    "UnlockRecordsResp": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Records"
+          }
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "keyDeleteResp": {
+      "type": "object"
+    }
+  }
+}
